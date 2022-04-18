@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    {% if page == 'home' %}
+
+    <meta property="og:image" content='https://janabechar.com/media/logo/janabechar.png' />
+    <meta property="og:description" content='News Portal Site' />
+    <meta property="og:url" content='https://{{request.get_host}}' />
+
+    {% elif page == 'news' %}
+    <meta property="og:title" content='{{news.title}}' />
+    <meta property="og:image" content="https://{{request.get_host}}{{news.image.url}}" />
+
+    <meta property="og:description" content='{{news.description}}' />
+    <meta property=’og:url’ content='https://{{request.get_host}}{{request.path}}' />
+
+    {% endif %}
+
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='627' />
+
+
+
+    <link rel="icon" type="image/x-icon" href="{% static 'media/logo/logo.png' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/3a78800d9d.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/include/news-article.css' %}">
+    <link rel="stylesheet" href="{% static 'css/size.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/padding-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/background-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/border-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hover-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/size-box.css' %}">
+
+
+
+    <title>
+        {% block title %}
+
+        <!-----Page Title ----->
+
+        {% endblock%}
+
+    </title>
+
+
+    <style>
+
+    </style>
+</head>
+
+<body class="center">
+
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=797167111166325&autoLogAppEvents=1"
+        nonce="ggQMVLeh"></script>
+
+    {% include 'include/header.html' %}
+    {% include 'include/trending.html' %}
+
+
+    {% block content %}
+
+
+
+
+    <!---------- Body Content ---------->
+
+    {% endblock %}
+
+
+    {% include 'include/footer.html' %}
+
+
+
+    <div class="scroll-to-top bg-red text-white pl-2 pt-1-4 pr-2 pb-1-4" id="scroll" onclick="scrollToTop()">
+        <i class="fa fa-long-arrow-up"></i>
+    </div>
+
+
+
+
+    <script>
+        function redirectHome() {
+            if (window.location.hostname == '127.0.0.1') {
+                return window.location = 'http://' + window.location.host;
+            }
+            else
+                return window.location = 'https://' + window.location.host;
+        }
+
+        window.addEventListener("scroll", function () {
+
+            var nav = document.getElementById('nav-wrapper')
+            var scrolBtn = document.getElementById("scroll")
+            menuItems.classList.remove('sidemenu')
+
+            menuIcon.style.display = "block"
+            crossIcon.style.display = "none"
+
+            menuItems.style.width = "0px"
+
+
+
+            nav.classList.toggle("sticky-nav", window.scrollY > 0);
+            scrolBtn.classList.toggle("scroll-to-target", window.scrollY > 500);
+
+
+        })
+        var searchInput = document.getElementById('search-input')
+        var inputSearch = document.getElementById('search-popup')
+        var searchIcon = document.getElementById('search-icon')
+        function showSearchInput() {
+            inputSearch.style.display = "flex"
+            searchInput.focus()
+            searchIcon.style.display = "none"
+        }
+        function hideSearchInput() {
+            inputSearch.style.display = "none"
+            searchIcon.style.display = "block"
+        }
+
+        var menuItems = document.getElementById('menu-items')
+        var menuIcon = document.getElementById('menuIcon')
+        var crossIcon = document.getElementById('crossIcon')
+
+
+        function showMenu() {
+            menuItems.classList.add('sidemenu')
+            menuIcon.style.display = "none"
+            crossIcon.style.display = "block"
+
+            menuItems.style.width = "40%"
+        }
+        function hideMenu() {
+            menuItems.classList.remove('sidemenu')
+
+            menuIcon.style.display = "block"
+            crossIcon.style.display = "none"
+
+            menuItems.style.width = "0px"
+        }
+
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+        }
+
+
+        function onClickNews(id) {
+            console.log()
+            return window.location.href = "{% url 'news' id=1414 %}".replace('/1414/', id)
+
+        }
+        function onSearch() {
+            var ddd = searchInput.value;
+            if (ddd == "") {
+                searchInput.focus();
+                return;
+
+            }
+            return window.location.href = "{% url 'search' %}" + '?q=' + ddd;
+        }
+
+        // Trigger button on click on Enter
+        searchInput.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("search-button").click();
+            }
+        });
+
+
+        var tags = document.getElementById("extra-tags")
+        var showbutton = document.getElementById("show-tag")
+        var hidebutton = document.getElementById("hide-tag")
+        function showtages() {
+            showbutton.style.display = "none"
+            hidebutton.style.display = "block"
+
+            tags.style.display = "flex"
+            tags.style.gap = "2rem"
+            tags.style.height = "30px"
+        }
+
+        function hidetages() {
+            showbutton.style.display = "block"
+            hidebutton.style.display = "none"
+            tags.style.height = "0px"
+        }
+
+
+
+        async function subscribe() {
+            inputBox = document.getElementById('subscribe-input')
+            success = document.getElementById('subscribe-success')
+            var email = document.getElementById('email-subscription');
+            var email_value = email.value;
+            let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (email.value == "") {
+                email.focus();
+                document.getElementById('subscribe-error').innerHTML = "Please enter your email address";
+            }
+            else if (!email.value.match(regexEmail)) {
+                email.focus();
+                document.getElementById('subscribe-error').innerHTML = "Please enter a valid email address";
+            }
+
+            else {
+                let button = document.getElementById('subscribe-button')
+                email.disabled = true;
+                button.disabled = true;
+                let data = { email: email.value }
+                const rawResponse = await fetch("{% url 'subscription' %}", {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (rawResponse.status == 201) {
+
+                    inputBox.classList.add('display-none')
+                    success.classList.remove('display-none')
+                }
+                else {
+                    email.disabled = false;
+                    button.disabled = false;
+                    document.getElementById('subscribe-error').innerHTML = "You are already subscribed"
+                    email.focus();
+                    console.log('already subscribed')
+
+
+                }
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

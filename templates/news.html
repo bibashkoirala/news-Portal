@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{%block title%}
+{{ news.title}}
+{%endblock%}
+
+
+
+{%block content%}
+
+<p class="sb-20"></p>
+<div class="my-container pad-2 bg-white">
+    <p class="fs-2-4 fw-bold  lh-1 pb-2 ">{{news.title | safe}}</p>
+
+    <div class="grid grid-cols-3fr-1fr gap-1 mob-grid">
+        <div class="pt-2 pb-2">
+            <div class="share-container my-container expanded-w row-wrapper sb ai-center ph-2 gap-2 pv-1">
+                <div class="column gap-0-3 ">
+                    <div class="fs-1-4 fw-bold row gap-1 ai-center">
+                        <img class="h-24 w-24" src="{% static 'media/logo/logo.png' %}" alt="">
+                        <a href="{% url 'home' %}" class="text-black fw-bold fs-1-6"> जनबिचार</a>
+                    </div>
+                    <p class="fw-400 fs-1-2"> प्रकाशित मिति : {{news.bsDate}}</p>
+                </div>
+                <div class="nav-item gap-1 row border-left flex-end-460">
+                    <div class="fb-share-button" data-href="https://{{request.get_host}}/{{request.path}}"
+                        data-layout="button" data-size="small"><a target="_blank"
+                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjanabechar.com%2F&amp;src=sdkpreparse"
+                            class="fb-xfbml-parse-ignore">Share</a></div>
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+                        data-show-count="true">Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+
+            </div>
+            <div class="pl-2 pr-2 bg-lightgray"><img class="cover expanded-w" src="{{news.image.url}}" alt=""></div>
+            <div class="fs-1-6 pt-4 ph-1  article-title">
+                {{news.description |safe}}
+            </div>
+            <div class="fs-1-6 pt-2 ph-1 article-title">
+                {{news.content |safe}}
+            </div>
+
+
+            <div class="pad-2">
+                <p class="fs-1-8 fw-bold divider pb-1">प्रतिक्रिया</p>
+                <div class="fb-comments pt-2 " data-href="https://janabechar.com/{{news.id}}" data-width=""
+                    data-numposts="5"></div>
+            </div>
+
+            <div class="border-style ai-center">
+                <div class="fs-2-2 fw-bold pad-1 text-black">सम्बन्धित समाचार</div>
+                </a>
+            </div>
+
+
+            <div class="grid grid-column-4-1fr mob-grid gap-2 pt-2 pb-2">
+                {%if related_news|length == 0 %}
+                <p class="center">No data Available</p>
+                {%else%}
+
+                {% for new in related_news%}
+
+                {% include 'include/news-article.html' %}
+
+                {%endfor%}
+                {%endif%}
+
+
+            </div>
+
+        </div>
+        <div class="pl-1 pt-4 border-left bg-white ">
+            <div class="taja-update"> {% include 'include/recent-update.html' %}</div>
+        </div>
+    </div>
+</div>
+{%endblock%}

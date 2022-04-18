@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{%load static %}
+
+
+{% block title %}
+
+Janabechar
+
+{% endblock %}
+<>
+
+
+    {% block content %}
+
+
+    <div class="column gap-1 gap-1 pad-2 ai-center my-container center ">
+        {% include 'include/high-light.html'%}
+    </div>
+
+    <div class="main-news-container">
+        <div class="main-news my-container mob-grid">
+
+            <div class="first-container stack overflow-hide pointer" onclick="onClickNews('{{mainNews.0.id}}')">
+                <img class="img-cover-center image-hover" src="{{mainNews.0.image.url}}" alt="">
+                <p class="stack-child left-0 top-0   pad-1 br-5 bg-brown lef-10 text-white">प्रमुख समाचार</p>
+                <div class="my-overlayer position-bottom expanded pointer-events-none"></div>
+                <div class="position-bottom pl-4 pr-4 pb-2 pad-1 ">
+                    <h2 class="line-limit-3 txt-color-white">{{mainNews.0.title}} </h2>
+                    <div class="fs-1-2 text-white opa-0-8 pt-2 lh-1">{{mainNews.0.description|safe }}</div>
+                </div>
+
+
+            </div>
+            <div class="box2 stack overflow-hide pointer" onclick="onClickNews('{{mainNews.1.id}}')">
+                <img class="img-cover-center image-hover" src="{{mainNews.1.image.url}}" alt="">
+                <p class="stack-child left-0 top-0   pad-1 br-5 bg-brown lef-10 text-white">प्रमुख समाचार</p>
+                <div class="my-overlayer position-bottom expanded pointer-events-none"></div>
+                <div class="position-bottom pl-4 pr-4 pb-2 pad-1 ">
+                    <p class="line-limit-3 txt-color-white fs-1-4 fw-bold lh-1">{{mainNews.1.title}}</p>
+                </div>
+
+            </div>
+            <div class="box3 stack overflow-hide pointer" onclick="onClickNews('{{mainNews.2.id}}')">
+                <img class="img-cover-center image-hover" src="{{mainNews.2.image.url}}" alt="">
+                <p class="stack-child left-0 top-0   pad-1 br-5 bg-brown lef-10 text-white">प्रमुख समाचार</p>
+                <div class="my-overlayer position-bottom expanded pointer-events-none"></div>
+                <div class="position-bottom pl-4 pr-4 pb-2 pad-1 ">
+                    <p class="line-limit-3 txt-color-white fs-1-4 fw-bold lh-1"> {{mainNews.2.title}}</p>
+                </div>
+
+            </div>
+            <div class="box1 pl-1">
+                {% include 'include/recent-update.html' %}
+
+            </div>
+
+        </div>
+    </div>
+
+
+    {% include 'include/opinion.html' %}
+
+    <div class="row sb my-container res-grid grid-cols-2fr-1fr gap-4 mob-grid pb-2 pt-4">
+        <div class="First-Container column sb ai-center box-white pad-2">
+
+            {% include 'include/politics.html'%}
+
+
+            <div class="Second-Container column expanded">
+                <div class=" expanded input-group pt-2 pb-4  box-white center">
+                    <!-- <div class="form-outline h-100 expanded-80">
+                        <label class="fs-1-6 fw-400 text-gray" for="form1">Search</label>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <input id="search-input expanded-w" type="search" id="form2" placeholder=" Search"
+                                class="form-control expanded-80" onsubmit="onSearch()" />
+                            <button id="search-button" type="button" class="btn" onclick="onSearch()">
+                                <i class="fa fa-search  ph-1 text-white pointer" aria-hidden="true">
+                                </i>
+                            </button>
+                        </div>
+
+
+                    </div> -->
+
+                </div>
+                <div class="expanded-w center pt-2 pb-2">
+                    <!-- <img class="expanded-w cover h-200" src="{% static 'media/Ad.png' %}" alt=""> -->
+                </div>
+                <!-- <div class="expanded center box-white">
+                    <div class="subscribe-box  column gap-1-5 text-center expanded-w  h-200 expanded-80 pt-1">
+                        <h1>Get Latest Update</h1>
+                        <input type="text" class="pad-1-2 fs-1-4 " placeholder="Your Email Address">
+
+                        <button type="submit" class=" btn  pad-1-2 fs-1-4 text-white bg-red">Subscribe</button>
+
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <!--Start Entertainment Section  -->
+
+        <div class="my-container">
+            <div class="bg-lightblack pad-2-4">
+                <div class="row sb expanded  border-style ai-center">
+                    <div class="fs-2-2 fw-bold pad-1 text-white">मनोरञ्जन</div>
+                    <a class="row gap-1 ai-center hover-0088FF" href="{% url 'category' title='entertainment'%}">
+                        <div class="pad-0-7 bg-0088FF text-white fs-1-2">></div>
+                        <div class="fs-1-4 fw-bold pr-0-7 text-white"> READ MORE</div>
+                    </a>
+                </div>
+
+                <!--===Feature Post of Entertainment  ===-->
+
+                <div class="column expanded stack pt-1 pb-1">
+                    <div class="stack-child top-10 row sb ai-center expanded-w">
+                        <a href="#" class="pad-1 br-5 bg-0088FF lef-10 text-white">मनोरञ्जन</a>
+
+                    </div>
+
+                    <div class="grid-column-2-1fr mob-grid ai-center gap-1 ">
+                        <div class="h-400 expanded-w overflow-hide pointer stack"
+                            onclick="onClickNews('{{singleEntertainement.0.id}}')">
+                            <img class="img-cover-center br-1  cover  image-hover "
+                                src="{{items.entertainment.0.image.url}}" alt="">
+                            <p class="stack-child left-0 top-0 pad-1 br-5 bg-0088FF lef-10 text-white">मनोरञ्जन</p>
+
+                        </div>
+                        <div class="expanded-w column gap-1 pad-3 text-white">
+                            <a href="{% url 'news' id=items.entertainment.0.id %}"
+                                class="line-limit-3 text-white padding-bottom-10 fs-2-4 fw-bold">{{items.entertainment.0.title}}</a>
+
+                            <div class="fs-1-2 text-white opa-0-8 pt-2 lh-1">{{items.entertainment.0.description|safe}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <hr width="100%" color="white" size="1">
+
+                <!--List of Post of Entertainment -->
+                <div class="mob-grid grid-column-4-1fr pt-2 gap-2 expanded text-white">
+                    {% for news in items.entertainment %}
+                    {% if forloop.first %}
+                    {% elif forloop.last %}
+
+                    {%else%}
+
+                    <div class="post-style-1 column gap-1 ai-center">
+                        <div class="expanded-w h-200 overflow-hide border-white pointer"
+                            onclick="onClickNews('{{news.id}}')"> <img
+                                class="expanded-w  img-cover-center cover  image-zoom " src="{{news.image.url}}" alt="">
+                        </div>
+
+                        <div class="column  gap-1">
+                            <a class="fs-1-4 fw-bold text-white" href="{% url 'news' id=news.id %}">{{news.title}}
+                            </a>
+
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <!--Sport Section  -->
+
+        <div class="row sb my-container res-grid grid-cols-1fr-2fr mob-grid gap-4  pb-2 pt-2">
+            <div class="Second-Container column box-white pad-2 shadow ">
+
+                {% include 'include/sports.html' %}
+
+            </div>
+            <div class="First-Container column sb ai-center box-white pad-2">
+                {% include 'include/finance.html' %}
+
+            </div>
+        </div>
+
+
+
+
+        <!-- Helth Section -->
+        <div class="my-container res-grid grid-cols-2fr-1fr mob-grid gap-4">
+            <div class="First-Container column sb ai-center box-white pad-2">
+
+                {% include 'include/health.html'%}
+
+            </div>
+            <div class="Second-Container column box-white pad-2">
+
+                {% include 'include/world.html' %}
+
+            </div>
+
+        </div>
+
+
+
+        <div class="row sb my-container  border-style ai-center">
+            <div class="fs-2-2 fw-bold pad-1 text-black">अन्य</div>
+            <a class="row gap-1 ai-center hover-0088FF" href="{% url 'category' title='more'%}">
+                <div class="pad-0-7 bg-0088FF text-white fs-1-2">></div>
+                <div class="fs-1-4 fw-bold pr-0-7"> READ MORE </div>
+            </a>
+
+        </div>
+
+
+
+        <div class="my-container grid grid-column-4-1fr mob-grid gap-2 pt-2 pb-2">
+            {% for new in news%}
+            {% include 'include/news-article.html' %}
+            {%endfor%}
+        </div>
+        {%endblock%}

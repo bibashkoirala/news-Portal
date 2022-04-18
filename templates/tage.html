@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block title %}
+
+{{title}}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="fs-2 fw-bold pl-1  pv-1-5 border-style  my-container">#{{title}} </div>
+
+<div class="my-container grid grid-column-4-1fr mob-grid gap-2 pt-2 pb-2">
+    {% for new in news%}
+    {% include 'include/news-article.html' %}
+    {%endfor%}
+</div>
+
+{% endblock %}
