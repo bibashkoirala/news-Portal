@@ -10,3 +10,4 @@ toml==0.10.2
 tzdata==2021.5
 waitress==2.1.1
 pyBSDate==0.3.0
+djangorestframework==3.13.1
