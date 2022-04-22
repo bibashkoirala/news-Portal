@@ -27,7 +27,7 @@ SECRET_KEY = '5%suvsgamfl-qq=awf6kd9-^6#r9!gm%)a-9m(bau4+66*i2cp'
 DEBUG = False
 
 ALLOWED_HOSTS = ["janabechar.com", "localhost",
-                 "janabechar.heroku.com", "127.0.0.1", ]
+                 "janabechar.heroku.com", "127.0.0.1", "35.188.31.156"]
 
 CSRF_TRUSTED_ORIGINS = ['https://janabechar.com']
 # Application definition
