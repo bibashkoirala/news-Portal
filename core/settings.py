@@ -36,7 +36,7 @@ print(DEBUG)
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = ["janabechar.com", "localhost", "127.0.0.1"]
+    ALLOWED_HOSTS = ["*"]
 
 
 CSRF_TRUSTED_ORIGINS = ['https://janabechar.com']
