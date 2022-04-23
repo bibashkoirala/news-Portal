@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 
+from distutils.debug import DEBUG
 import os
 from pathlib import Path
 
@@ -22,11 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECRET_KEY = '5%suvsgamfl-qq=awf6kd9-^6#r9!gm%)a-9m(bau4+66*i2cp'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '5%suvsgamfl-qq=awf6kd9-^6#r9!gm%)a-9m(bau4+66*i2cp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('DEBUG')) == '1'  # 1==True, 0==False
+# DEBUG = str(os.environ.get('DEBUG')) == '1'  # 1==True, 0==False
+DEBUG = False
 
 print(DEBUG)
 

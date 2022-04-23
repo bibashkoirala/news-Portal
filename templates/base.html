@@ -139,7 +139,8 @@
         function showMenu() {
             menuItems.classList.add('sidemenu')
             menuIcon.style.display = "none"
-            crossIcon.style.display = "block"
+            crossIcon.classList.remove('display-none');
+            crossIcon.style.display = "block";
 
             menuItems.style.width = "40%"
         }
@@ -214,7 +215,7 @@
             else if (!email.value.match(regexEmail)) {
                 email.focus();
                 document.getElementById('subscribe-error').innerHTML = "Please enter a valid email address";
-                
+
             }
 
 
