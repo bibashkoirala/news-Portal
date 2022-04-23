@@ -21,13 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5%suvsgamfl-qq=awf6kd9-^6#r9!gm%)a-9m(bau4+66*i2cp'
+SECRET_KEY = os.environ.get('SECRETE_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = str(os.environ.get('DEBUG')) == '1'  # 1==True, 0==False
 
-ALLOWED_HOSTS = ["janabechar.com", "localhost",
-                 "janabechar.heroku.com", "127.0.0.1", "35.188.31.156"]
+ALLOWED_HOSTS = []
+
+if not DEBUG:
+    ALLOWED_HOSTS += ["janabechar.com"]
+
 
 CSRF_TRUSTED_ORIGINS = ['https://janabechar.com']
 # Application definition
@@ -131,12 +134,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,  'staticfiles/media')
+MEDIA_ROOT = os.path.join(BASE_DIR,  'static/media')
 
 
 # CKEditor settigs
