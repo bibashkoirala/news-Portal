@@ -47,7 +47,7 @@ class News(models.Model):
         Category, on_delete=models.CASCADE, related_name='cat')
     tag = models.ManyToManyField(
         Tag, blank=True, related_name='tag')
-    description = RichTextUploadingField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     content = RichTextUploadingField(blank=True, null=True)
     image = models.ImageField(blank=True, upload_to=get_obs_upload_path())
     published_at = models.DateTimeField(auto_now_add=True)
