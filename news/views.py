@@ -34,7 +34,7 @@ def home(request):
     news = News.objects.all()[0:4]
     tags = Tag.objects.order_by('-created_at')
     categories = Category.objects.exclude(title='more')
-    mainNews = News.objects.filter(is_main=True)[0:3]
+    mainNews = News.objects.filter(is_main=True).order_by('-published_at')[0:3]
     recent_update = News.objects.filter(
         is_main=False, is_highlighted=False).order_by('-published_at')[0:5]
 
