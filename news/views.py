@@ -23,15 +23,16 @@ def home(request):
     npdate = TodayBS()
 
     items = {}
-    recent_update=[]
+    recent_update = []
     categoriess = Category.objects.all()
     for category in categoriess:
-        items[category.title] = list( category.cat.order_by('-published_at').all()[0:6])
-        recent_update.append(list(category.cat.order_by('-published_at').all()[0:1]))
-        
-    
+        items[category.title] = list(
+            category.cat.order_by('-published_at').all()[0:6])
+        recent_update.append(
+            list(category.cat.order_by('-published_at').all()[0:1]))
+
     news = News.objects.all()[0:4]
-    tags = Tag.objects.all()
+    tags = Tag.objects.order_by('-created_at')
     categories = Category.objects.exclude(title='more')
     mainNews = News.objects.filter(is_main=True)[0:3]
     recent_update = News.objects.filter(
@@ -60,20 +61,22 @@ def home(request):
 
 def news(request, id):
     # news=News.objects.filter(id=id)
+    npdate = TodayBS()
     news = get_object_or_404(News, id=id)
     cat_name = news.category.name
-    recent_update = News.objects.filter(
-        is_main=False, is_highlighted=False).exclude(id=id).order_by('-published_at')[0:6]
+    recent_update = News.objects.filter().exclude(
+        id=id).order_by('-published_at')[0:6]
     news_id_list = []
     for n in recent_update:
         news_id_list.append(n.id)
     related_news = News.objects.filter(
         category__name=cat_name).order_by('-published_at').exclude(id=id).exclude(id__in=news_id_list)
-    tags = Tag.objects.all()
+    tags = Tag.objects.order_by('-created_at')
 
     categories = Category.objects.exclude(title='more')
     page = "news"
     context = {
+        'npdate': npdate,
         'related_news': related_news,
         'news': news,
         'tags': tags,
@@ -88,15 +91,16 @@ def news(request, id):
 
 
 def category(request, title):
-
+    npdate = TodayBS()
     category = get_object_or_404(Category, title=title)
     news = News.objects.filter(category=category).order_by('-published_at')
-    tags = Tag.objects.all()
+    tags = Tag.objects.order_by('-created_at')
     categories = Category.objects.exclude(title='more')
     recent_update = News.objects.filter(
         is_main=False, is_highlighted=False).order_by('-published_at')[0:6]
     page = category.title
     context = {
+        'npdate': npdate,
         'page': page,
         'category': category,
         'news': news,
@@ -109,11 +113,13 @@ def category(request, title):
 
 
 def tag(request, name):
+    npdate = TodayBS()
     tags = Tag.objects.all()
     categories = Category.objects.all()
     news = News.objects.filter(tag__name=name).order_by('-published_at')
     page = "tag"
     context = {
+        'npdate': npdate,
         'title': name,
         'page': page,
         'news': news,
@@ -126,6 +132,7 @@ def tag(request, name):
 
 
 def search(request):
+    npdate = TodayBS()
     tags = Tag.objects.all()
     categories = Category.objects.all()
     recent_update = News.objects.filter(
@@ -139,6 +146,7 @@ def search(request):
             description__icontains=query) | Q(content__icontains=query))
     page = "search"
     context = {
+        'npdate': npdate,
         'results': results,
         'tags': tags,
         'categories': categories,
