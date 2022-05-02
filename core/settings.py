@@ -28,7 +28,7 @@ SECRET_KEY = '5%suvsgamfl-qq=awf6kd9-^6#r9!gm%)a-9m(bau4+66*i2cp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = str(os.environ.get('DEBUG')) == '1'  # 1==True, 0==False
-DEBUG = True
+DEBUG = False
 
 print(DEBUG)
 
