@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  font-family: mukta, sans-serif;
+  font-family: Mukta;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,6 +240,7 @@ a:active {
 
   align-items: center;
 }
+
 .bxshadow {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 0px;
 }
@@ -255,6 +256,15 @@ a:active {
 .trending p {
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.trending-list {
+  display: block;
+}
+@media screen and (max-width: 800px) {
+  .trending-list {
+    display: none;
+  }
 }
 
 .body-section {
@@ -275,7 +285,7 @@ a:active {
 
 .main-news {
   max-width: 1200px;
-  padding-top: 10px;
+
   display: grid;
   background: #f7f7f7;
 

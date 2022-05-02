@@ -68,7 +68,9 @@
         nonce="ggQMVLeh"></script>
 
     {% include 'include/header.html' %}
-    {% include 'include/trending.html' %}
+    <div class="trending-list">
+        {% include 'include/trending.html' %}
+    </div>
 
 
     {% block content %}

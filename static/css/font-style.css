@@ -394,7 +394,9 @@
       ''') !important;
     }
   } */
-
+.text-graydark {
+  color: #444 !important;
+}
 .text-red {
   color: #ff0000 !important;
 }
