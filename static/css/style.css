@@ -675,3 +675,13 @@ footer.footer {
     align-items: center;
   }
 }
+
+.img-100 img {
+  padding: 1rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  object-fit: cover;
+  width: 80% !important;
+  height: 50% !important;
+}

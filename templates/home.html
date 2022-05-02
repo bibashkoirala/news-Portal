@@ -17,7 +17,7 @@ Janabechar
         {% include 'include/high-light.html'%}
     </div>
 
-    <div class="main-news-container">
+    <div class="main-news-container pad-2">
         <div class="main-news my-container mob-grid">
 
             <div class="first-container stack overflow-hide pointer" onclick="onClickNews('{{mainNews.0.id}}')">
@@ -49,7 +49,7 @@ Janabechar
                 </div>
 
             </div>
-            <div class="box1 pl-1">
+            <div class="box1">
                 {% include 'include/recent-update.html' %}
 
             </div>
@@ -67,7 +67,7 @@ Janabechar
 
 
             <div class="Second-Container column expanded">
-                <div class=" expanded pad-2 box-white center">
+                <div class=" expanded pad-2 box-white">
                     {% include 'include/sports.html' %}
 
 
@@ -123,7 +123,7 @@ Janabechar
                             <p class="stack-child left-0 top-0 pad-1 br-5 bg-0088FF lef-10 text-white">मनोरञ्जन</p>
 
                         </div>
-                        <div class="expanded-w column gap-1 pad-3 text-white">
+                        <div class="expanded-w column gap-1 pad-2 text-white">
                             <a href="{% url 'news' id=items.entertainment.0.id %}"
                                 class="line-limit-3 text-white padding-bottom-10 fs-2-4 fw-bold">{{items.entertainment.0.title}}</a>
 
@@ -182,7 +182,7 @@ Janabechar
 
 
         <!-- Helth Section -->
-        <div class="my-container res-grid grid-cols-2fr-1fr mob-grid gap-4">
+        <div class="my-container res-grid grid-cols-2fr-1fr mob-grid gap-4 pb-2">
             <div class="First-Container column sb ai-center box-white pad-2">
 
                 {% include 'include/health.html'%}
@@ -198,7 +198,7 @@ Janabechar
 
 
 
-        <div class="row sb my-container  border-style ai-center">
+        <!-- <div class="row sb my-container  border-style ai-center">
             <div class="fs-2-2 fw-bold pad-1 text-black">अन्य</div>
             <a class="row gap-1 ai-center hover-0088FF" href="{% url 'category' title='more'%}">
                 <div class="pad-0-7 bg-0088FF text-white fs-1-2">></div>
@@ -213,5 +213,5 @@ Janabechar
             {% for new in news%}
             {% include 'include/news-article.html' %}
             {%endfor%}
-        </div>
+        </div> -->
         {%endblock%}
