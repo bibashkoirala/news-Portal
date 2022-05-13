@@ -50,7 +50,7 @@ class News(models.Model):
     description = models.TextField(blank=True, null=True)
     content = RichTextUploadingField(blank=True, null=True)
     image = models.ImageField(blank=True, upload_to=get_obs_upload_path())
-    published_at = models.DateTimeField(auto_now_add=True)
+    published_at = models.DateTimeField()
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:

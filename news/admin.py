@@ -11,7 +11,7 @@ admin.site.index_title = "Welcome to Jana Bechar"
 
 class NewsAdmin(admin.ModelAdmin):
     list_display = ['title', 'category',
-                    'is_highlighted', 'is_main', 'bsDate']
+                    'is_highlighted', 'is_main', 'bsDate', 'published_at']
     list_filter = ['category', 'is_highlighted', 'is_main']
     search_fields = ['title', 'category__name']
     list_per_page = 10
