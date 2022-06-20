@@ -143,7 +143,7 @@ def search(request):
         if query == '':
             query == 'None'
         results = News.objects.filter(Q(title__icontains=query) | Q(
-            description__icontains=query) | Q(content__icontains=query))
+            description__icontains=query) | Q(content__icontains=query)).order_by('-published_at')
     page = "search"
     context = {
         'npdate': npdate,
