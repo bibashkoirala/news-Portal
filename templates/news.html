@@ -41,10 +41,16 @@
             <div class="fs-1-6    text-graydark  pt-4 ph-1  article-title">
                 {{news.description |safe}}
             </div>
+
             <div class="fs-1-6    text-graydark  fw pt-2 ph-1 article-title img-100">
                 {{news.content |safe}}
             </div>
 
+            <div class="img-100">
+                <img class="expanded pointer image-zoom pb-2 "
+                    onclick="onClickLink(`https://www.facebook.com/State-Technical-College-102684299215367`)"
+                    src="{% static 'media/logo/state_technical_college.jpg' %}" alt="State Technical College">
+            </div>
 
             <div class="pad-2">
                 <p class="fs-1-8 fw-bold divider pb-1">प्रतिक्रिया</p>
@@ -77,7 +83,7 @@
         <div class="pl-1 pt-4 border-left bg-white ">
             <div class="taja-update">
 
-                <img class="expanded pointer image-zoom pb-2"
+                <img class="expanded pointer image-zoom pb-2 "
                     onclick="onClickLink(`https://www.facebook.com/State-Technical-College-102684299215367`)"
                     src="{% static 'media/logo/state_technical_college.jpg' %}" alt="State Technical College">
                 {% include 'include/recent-update.html' %}
