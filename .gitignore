@@ -17,7 +17,11 @@ __pycache__/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media
+media/2022/
+media/2023/
+media/2024/
+media/2025/
+media/uploads/
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py

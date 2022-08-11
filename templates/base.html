@@ -167,6 +167,10 @@
             return window.location.href = "{% url 'news' id=1414 %}".replace('/1414/', id)
 
         }
+
+        function onClickLink(url) {
+            return window.location.href = url;
+        }
         function onSearch() {
             var ddd = searchInput.value;
             if (ddd == "") {
