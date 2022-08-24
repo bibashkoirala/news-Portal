@@ -1,4 +1,4 @@
-Django==3.2.13
+Django==3.2.14
 django-dotenv==1.4.2
 django-ckeditor==6.2.0
 djangorestframework==3.13.1
