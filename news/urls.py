@@ -11,7 +11,13 @@ urlpatterns = [
     path("category/<str:title>/", category, name="category"),
     path("search/", search, name="search"),
     path("tag/<str:name>/", tag, name="tag"),
-    path("subsription/", subscription, name='subscription')
+    path("subsription/", subscription, name='subscription'),
+
+    path("catagoryapi/", Catagorylist.as_view(), name='catagoryapi'),
+    path("tagapi/", Taglist.as_view(), name='tagapi'),
+    path("newsapi/", Newslist.as_view(), name='newsapi'),
+    path("subscriptionapi/", Subscriptionlist.as_view(), name='subscriptionapi'),
+
 
 
 

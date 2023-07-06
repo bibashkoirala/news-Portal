@@ -4,6 +4,7 @@ import email
 from email import message
 
 from django.shortcuts import get_object_or_404, render, HttpResponse
+from rest_framework.generics import ListAPIView
 
 from news.models import Category, News, Subscription, Tag
 from django.db.models import Q
@@ -11,8 +12,24 @@ from rest_framework import status
 from news.utils import TodayBS
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .serializer import CategorySerializer, TagSerializer, NewsSerializer, SubscriptionSerializer 
 # Create your views here.
 
+class Catagorylist(ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class Taglist(ListAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+class Newslist(ListAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+
+class Subscriptionlist(ListAPIView):
+    queryset = Subscription.objects.all()
+    serializer_class = SubscriptionSerializer
 
 def test(request):
     return render(request, 'home.html')
