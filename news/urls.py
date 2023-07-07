@@ -14,6 +14,7 @@ urlpatterns = [
     path("subsription/", subscription, name='subscription'),
 
     path("catagoryapi/", Catagorylist.as_view(), name='catagoryapi'),
+    path("catagorybyid/<int:id>", Catagorybyid.as_view(), name='catagorybyidapi'),
     path("tagapi/", Taglist.as_view(), name='tagapi'),
     path("newsapi/", Newslist.as_view(), name='newsapi'),
     path("subscriptionapi/", Subscriptionlist.as_view(), name='subscriptionapi'),

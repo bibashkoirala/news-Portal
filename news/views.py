@@ -19,6 +19,11 @@ class Catagorylist(ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+class Catagorybyid(ListAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+    lookup_field= ["id"] 
+
 class Taglist(ListAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
